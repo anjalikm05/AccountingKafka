@@ -1,7 +1,8 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.5.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '2.7.18'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "org.sonarqube" version "4.2.1.3168"
 }
 
 group = 'org.cris.kafka'
@@ -31,6 +32,11 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+sonar {
+	properties {
+		property "sonar.projectKey", "PRSWebApplication"
+		property "sonar.host.url", "http://13.126.115.45:9000"
+		property "sonar.login", "sqp_b90f885ebef43288bae928dc88aa2141df89b96f"
+	}
 }
+
